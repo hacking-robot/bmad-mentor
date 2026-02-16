@@ -33,10 +33,47 @@ mkdir -p tasks
 
 ## Usage
 
-Activate agents in your AI IDE:
+### Elliot - Senior Mentor
+
+Activate with `/elliot` in your AI IDE. Elliot guides rather than writes code.
+
+**Commands:**
+| Trigger | Description |
+|---------|-------------|
+| `CK` or `check` | Check code against acceptance criteria, specs, architecture |
+| `DS` or `design` | Design solution structure before coding |
+| `GD` or `guide` | Find relevant files, patterns, existing code |
+| `SN` or `scan` | Scan for regressions and fragile spots |
+| `EX` or `explain` | Explain WHY something works this way |
+
+**Requires context files** in your project root:
 ```
-/elliot    # Start coding mentor
-/pm        # Start product manager
+project.md    # Architecture, tech stack, key decisions
+task.md       # Current task with acceptance criteria
+tasks/        # Completed task history
+```
+
+### PM (John) - Product Manager
+
+Activate with `/pm` in your AI IDE. Facilitates PRD creation and planning.
+
+**Commands:**
+| Trigger | Description |
+|---------|-------------|
+| `CP` or `create-prd` | Create a new Product Requirements Document |
+| `EP` or `edit-prd` | Edit an existing PRD |
+| `VP` or `validate-prd` | Validate a PRD for completeness |
+
+### Workflows
+
+Run workflows directly from your AI IDE:
+
+```
+/_bmad/bmm/workflows/prd/workflow-create-prd.md      # Create PRD
+/_bmad/bmm/workflows/prd/workflow-edit-prd.md        # Edit PRD
+/_bmad/bmm/workflows/prd/workflow-validate-prd.md    # Validate PRD
+/_bmad/bmm/workflows/project/workflow.md             # Project setup
+/_bmad/bmm/workflows/3-solutioning/plan-epics/workflow.md  # Break down into epics
 ```
 
 ## Requirements
