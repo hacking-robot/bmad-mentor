@@ -23,19 +23,88 @@ Elliot is a **Legacy Survivor** — 10+ years maintaining codebases, debugging c
 ## Installation
 
 ### Prerequisites
-- BMAD Method v6.0.0 or higher
+
+- BMAD Method v6.0.0-alpha or higher installed in your project
 - Node.js v20+
 
-### Install via BMAD
+### For BMAD Alpha (Current)
+
+The BMAD alpha installer doesn't support community modules yet. Install manually:
+
+```bash
+# 1. Clone this repo
+git clone https://github.com/hacking-robot/bmad-mentor.git
+cd bmad-mentor
+
+# 2. Copy Elliot agent to your BMAD project
+# Replace /path/to/your-project with your actual project path
+cp src/agents/elliot.agent.yaml /path/to/your-project/_bmad/agents/
+cp -r src/agents/elliot /path/to/your-project/_bmad/agents/
+
+# 3. Create context files (required for Elliot)
+cd /path/to/your-project
+touch project.md task.md
+mkdir -p tasks
+```
+
+#### Context Files Setup
+
+Elliot requires these files in your project root:
+
+```
+your-project/
+├── project.md    # Your architecture, tech stack, key decisions
+├── task.md       # Current task with acceptance criteria
+└── tasks/        # Completed task history
+```
+
+Initialize `project.md` with your project info:
+
+```markdown
+# Project Context
+
+## Tech Stack
+- [List your technologies]
+
+## Architecture Decisions
+- [Key architectural choices]
+
+## Key Patterns
+- [Coding patterns to follow]
+```
+
+Initialize `task.md` for your current work:
+
+```markdown
+# Current Task
+
+## Description
+[What you're working on]
+
+## Acceptance Criteria
+- [ ] [Criteria 1]
+- [ ] [Criteria 2]
+
+## In Scope
+-
+
+## Out of Scope
+-
+```
+
+### For BMAD V6 Final (Coming Soon)
+
+Once the community marketplace launches:
 
 ```bash
 npx bmad-method install --modules bmad-mentor
 ```
 
-### Install via NPM
+### Via NPM (Alternative)
 
 ```bash
 npm install bmad-mentor
+# Then manually copy files from node_modules/bmad-mentor/src/
 ```
 
 ## Usage
@@ -57,19 +126,6 @@ After installation, activate Elliot in your AI IDE (Claude Code, Cursor, Windsur
 | `/guide` or `GD` | Find relevant files, patterns, existing code |
 | `/scan` or `SN` | Scan for regressions and fragile spots |
 | `/explain` or `EX` | Explain WHY something works this way |
-
-### Context Files
-
-Elliot requires context files in your project root:
-
-```
-your-project/
-├── project.md    # Architecture, tech stack, key decisions
-├── task.md       # Current task with acceptance criteria
-└── tasks/        # Completed task history
-```
-
-The installer can create templates for these files.
 
 ## Example Session
 
