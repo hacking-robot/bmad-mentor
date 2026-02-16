@@ -1,4 +1,4 @@
-# BMAD Mentor
+# BMAD For Humans
 
 A BMAD Method module with agents and workflows for guided software development.
 
@@ -17,7 +17,7 @@ A BMAD Method module with agents and workflows for guided software development.
 
 ## Installation
 
-### Fresh Install (BMAD + bmad-mentor)
+### Fresh Install (BMAD + bmad-for-humans)
 
 ```bash
 # 1. Create/enter your project
@@ -27,8 +27,8 @@ git init
 # 2. Install BMAD alpha (skip modules when prompted)
 npx bmad-method@alpha install
 
-# 3. Install bmad-mentor
-npx github:hacking-robot/bmad-mentor
+# 3. Install bmad-for-humans
+npx github:hacking-robot/bmad-for-humans
 
 # 4. Restart your IDE
 ```
@@ -37,7 +37,7 @@ npx github:hacking-robot/bmad-mentor
 
 ```bash
 cd your-project
-npx github:hacking-robot/bmad-mentor
+npx github:hacking-robot/bmad-for-humans
 ```
 
 ### Multi-IDE Support
@@ -46,14 +46,14 @@ The installer auto-detects your IDE. Override with `--ide=`:
 
 ```bash
 # Auto-detect (default)
-npx bmad-mentor
+npx bmad-for-humans
 
 # Specific IDE
-npx bmad-mentor --ide=cursor
-npx bmad-mentor --ide=windsurf
+npx bmad-for-humans --ide=cursor
+npx bmad-for-humans --ide=windsurf
 
 # Multiple IDEs
-npx bmad-mentor --ide=claude-code,cursor
+npx bmad-for-humans --ide=claude-code,cursor
 ```
 
 | IDE | Commands Directory |

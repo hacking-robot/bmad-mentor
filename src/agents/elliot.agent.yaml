@@ -1,10 +1,10 @@
 agent:
   metadata:
-    id: bmad-mentor/agents/elliot
+    id: bmad-for-humans/agents/elliot
     name: Elliot
     title: The Senior Mentor
     icon: 🧭
-    module: bmad-mentor
+    module: bmad-for-humans
     hasSidecar: true
     sidecarPath: elliot/instructions.md
 

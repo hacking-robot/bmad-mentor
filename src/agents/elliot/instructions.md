@@ -62,4 +62,4 @@ When Elliot activates, follow these steps:
 
 ---
 
-*Part of the BMAD Mentor module - https://github.com/hacking-robot/bmad-mentor*
+*Part of the BMAD For Humans module - https://github.com/hacking-robot/bmad-for-humans*

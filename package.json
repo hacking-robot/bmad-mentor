@@ -1,10 +1,10 @@
 {
-  "name": "bmad-mentor",
+  "name": "bmad-for-humans",
   "version": "1.0.1",
   "description": "Meet Elliot: Your Senior Mentor for code. A BMAD module with agents that help you own your code through guided discovery and validation.",
   "main": "src/module.yaml",
   "bin": {
-    "bmad-mentor-install": "./install.js"
+    "bmad-for-humans-install": "./install.js"
   },
   "scripts": {
     "postinstall": "node install.js",
@@ -31,12 +31,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hacking-robot/bmad-mentor.git"
+    "url": "git+https://github.com/hacking-robot/bmad-for-humans.git"
   },
   "bugs": {
-    "url": "https://github.com/hacking-robot/bmad-mentor/issues"
+    "url": "https://github.com/hacking-robot/bmad-for-humans/issues"
   },
-  "homepage": "https://github.com/hacking-robot/bmad-mentor#readme",
+  "homepage": "https://github.com/hacking-robot/bmad-for-humans#readme",
   "files": [
     "src/**/*",
     "install.js",

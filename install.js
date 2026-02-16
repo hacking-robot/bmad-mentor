@@ -310,7 +310,7 @@ const WORKFLOWS = [
   },
 ];
 
-console.log('\n🧭 BMAD Mentor Installer\n');
+console.log('\n🧭 BMAD For Humans Installer\n');
 
 // Detect or get IDE from args
 let targetIDEs = [];
@@ -398,7 +398,7 @@ if (!fs.existsSync(taskMd)) {
 
 mkdirp(tasksDir);
 
-console.log('\n✅ BMAD Mentor installed successfully!\n');
+console.log('\n✅ BMAD For Humans installed successfully!\n');
 console.log('Available commands:');
 console.log('\n  Agents:');
 console.log('    /elliot       - Senior coding mentor');
@@ -414,5 +414,5 @@ const preferred = Object.entries(IDE_CONFIGS).filter(([,c]) => c.preferred).map(
 const others = Object.entries(IDE_CONFIGS).filter(([,c]) => !c.preferred).map(([id]) => id).join(', ');
 console.log(`  Recommended: ${preferred}`);
 console.log(`  Others: ${others}`);
-console.log('\nUsage: npx bmad-mentor --ide=cursor');
+console.log('\nUsage: npx bmad-for-humans --ide=cursor');
 console.log('\nRestart your IDE to use the new commands.\n');

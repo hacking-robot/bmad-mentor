@@ -1,5 +1,5 @@
-id: bmad-mentor
-name: BMAD Mentor
+id: bmad-for-humans
+name: BMAD For Humans
 description: Agents and workflows for guided software development - Elliot (coding mentor), PM (product manager), plus PRD, project, and planning workflows.
 version: 1.0.0
 author: hacking-robot
