@@ -1,22 +1,24 @@
 id: bmad-mentor
 name: BMAD Mentor
-description: Meet Elliot - Your Senior Mentor for code. Guides developers to write maintainable, well-crafted code through validation, design help, and teaching the WHY behind decisions.
+description: Agents and workflows for guided software development - Elliot (coding mentor), PM (product manager), plus PRD, project, and planning workflows.
 version: 1.0.0
 author: hacking-robot
 
 # Module classification
 type: agent-collection
-bmad_version: ">=6.0.0"
+bmad_version: ">=6.0.0-alpha"
 
 # Installation configuration
 install:
-  # Files to copy during installation
   agents:
     - src/agents/elliot.agent.yaml
-
-  # Sidecar resources (context files loaded by expert agents)
+    - src/agents/pm.agent.yaml
   resources:
     - src/agents/elliot/instructions.md
+  workflows:
+    - src/workflows/prd
+    - src/workflows/project
+    - src/workflows/3-solutioning/plan-epics
 
 # Questions asked during installation
 questions:
@@ -86,3 +88,30 @@ provides:
           description: Scan for regressions and fragile spots
         - trigger: "/explain"
           description: Explain WHY something works this way
+
+    - id: pm
+      name: PM
+      title: Product Manager
+      icon: "📋"
+      description: Product manager for PRD and planning workflows
+      commands:
+        - trigger: "/prd"
+          description: Create, edit, or validate PRDs
+        - trigger: "/plan-epics"
+          description: Break down requirements into feature groups
+
+  workflows:
+    - id: prd
+      name: PRD Workflow
+      description: Create, edit, and validate Product Requirements Documents
+      modes: [create, edit, validate]
+
+    - id: project
+      name: Project Workflow
+      description: Architecture and project context workflows
+      modes: [create, edit, validate]
+
+    - id: plan-epics
+      name: Plan Epics
+      description: Break down requirements into feature groups and work units
+      modes: [create]
