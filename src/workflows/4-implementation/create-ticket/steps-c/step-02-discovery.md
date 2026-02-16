@@ -57,8 +57,8 @@ To comprehensively analyze git changes, commit history, previous tickets, projec
 
 ## CONTEXT BOUNDARIES:
 
-- Available: ticket_number and mode from step-01
-- Focus: Git changes, related history, relevant documents, codebase patterns
+- Available: ticket_number, ticket_source, ticket_title, ticket_content, epic_name, and mode from step-01
+- Focus: Git changes, related history, relevant documents, codebase patterns, plus ticket context from source selection
 - Dependencies: Requires git repository
 
 ## MANDATORY SEQUENCE

@@ -55,4 +55,4 @@ Load and read full config from `{project-root}/_bmad/bmm/config.yaml` and resolv
 
 ### 2. First Step EXECUTION
 
-Load, read the full file and then execute `./steps-c/step-01-init.md` to begin the workflow.
+Load, read the full file and then execute `./steps-c/step-01-source-selection.md` to begin the workflow.
