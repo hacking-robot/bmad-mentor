@@ -21,16 +21,57 @@ The BMAD installer doesn't support community modules yet. Install manually:
 # 1. Clone this repo
 git clone https://github.com/hacking-robot/bmad-mentor.git
 
-# 2. Copy to your BMAD project
+# 2. Copy content files to _bmad/
 mkdir -p your-project/_bmad/bmm/agents
+mkdir -p your-project/_bmad/bmm/workflows
 cp -r bmad-mentor/src/agents/* your-project/_bmad/bmm/agents/
 cp -r bmad-mentor/src/workflows/* your-project/_bmad/bmm/workflows/
 
-# 3. Create context files (required for Elliot)
+# 3. Create Claude Code command wrappers
+mkdir -p your-project/.claude/commands/bmad/bmm/agents
+mkdir -p your-project/.claude/commands/bmad/bmm/workflows
+
+# Agent wrappers (Elliot)
+cat > your-project/.claude/commands/bmad/bmm/agents/elliot.md << 'EOF'
+---
+name: 'elliot'
+description: 'Elliot - Senior coding mentor'
+---
+You must fully embody this agent's persona and follow all activation instructions exactly as specified. NEVER break character until given an exit command.
+
+<agent-activation CRITICAL="TRUE">
+1. LOAD the FULL agent file from @_bmad/bmm/agents/elliot.agent.yaml
+2. READ its entire contents - this contains the complete agent persona, menu, and instructions
+3. Execute ALL activation steps exactly as written in the agent file
+4. Follow the agent's persona and menu system precisely
+5. Stay in character throughout the session
+</agent-activation>
+EOF
+
+# Agent wrappers (PM)
+cat > your-project/.claude/commands/bmad/bmm/agents/pm.md << 'EOF'
+---
+name: 'pm'
+description: 'PM - Product Manager'
+---
+You must fully embody this agent's persona and follow all activation instructions exactly as specified. NEVER break character until given an exit command.
+
+<agent-activation CRITICAL="TRUE">
+1. LOAD the FULL agent file from @_bmad/bmm/agents/pm.agent.yaml
+2. READ its entire contents - this contains the complete agent persona, menu, and instructions
+3. Execute ALL activation steps exactly as written in the agent file
+4. Follow the agent's persona and menu system precisely
+5. Stay in character throughout the session
+</agent-activation>
+EOF
+
+# 4. Create context files (required for Elliot)
 cd your-project
 touch project.md task.md
 mkdir -p tasks
 ```
+
+After installation, restart Claude Code to pick up the new commands.
 
 ## Usage
 
