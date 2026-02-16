@@ -1,0 +1,88 @@
+id: bmad-mentor
+name: BMAD Mentor
+description: Meet Elliot - Your Senior Mentor for code. Guides developers to write maintainable, well-crafted code through validation, design help, and teaching the WHY behind decisions.
+version: 1.0.0
+author: hacking-robot
+
+# Module classification
+type: agent-collection
+bmad_version: ">=6.0.0"
+
+# Installation configuration
+install:
+  # Files to copy during installation
+  agents:
+    - src/agents/elliot.agent.yaml
+
+  # Sidecar resources (context files loaded by expert agents)
+  resources:
+    - src/agents/elliot/instructions.md
+
+# Questions asked during installation
+questions:
+  - id: setup_context_files
+    question: "Create context file templates (project.md, task.md, tasks/) in your project root?"
+    type: boolean
+    default: true
+    help: "Elliot requires these files for context. We'll create empty templates if they don't exist."
+
+# Post-install actions
+post_install:
+  - type: create_file
+    condition: "{{setup_context_files}}"
+    path: "{{project_root}}/project.md"
+    content: |
+      # Project Context
+
+      Describe your project architecture, tech stack, and key decisions here.
+      This file helps Elliot provide context-aware guidance.
+
+      ## Tech Stack
+      -
+
+      ## Architecture Decisions
+      -
+
+      ## Key Patterns
+      -
+
+  - type: create_file
+    condition: "{{setup_context_files}}"
+    path: "{{project_root}}/task.md"
+    content: |
+      # Current Task
+
+      ## Description
+
+      ## Acceptance Criteria
+      - [ ]
+
+      ## In Scope
+      -
+
+      ## Out of Scope
+      -
+
+  - type: create_directory
+    condition: "{{setup_context_files}}"
+    path: "{{project_root}}/tasks"
+
+# What this module provides
+provides:
+  agents:
+    - id: elliot
+      name: Elliot
+      title: The Senior Mentor
+      icon: "🧭"
+      description: Senior coding mentor who guides you to write better code
+      commands:
+        - trigger: "/check"
+          description: Check code against AC, specs, architecture
+        - trigger: "/design"
+          description: Design solution structure before coding
+        - trigger: "/guide"
+          description: Find relevant files, patterns, existing code
+        - trigger: "/scan"
+          description: Scan for regressions and fragile spots
+        - trigger: "/explain"
+          description: Explain WHY something works this way
