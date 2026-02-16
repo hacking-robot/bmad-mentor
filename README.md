@@ -5,15 +5,21 @@ A BMAD Method module with agents and workflows for guided software development.
 ## What's Included
 
 ### Agents
-- **Elliot** - Senior coding mentor who guides rather than writes
+- **Reachy** - Friendly AI coding companion who helps with code exploration, debugging, and learning
 - **PM** - Product manager for PRD and planning workflows
 
 ### Workflows
+**Planning:**
 - **create-prd** - Create Product Requirements Documents
 - **edit-prd** - Edit existing PRDs
 - **validate-prd** - Validate PRD completeness
 - **project** - Create architecture and project context docs
 - **plan-epics** - Break down requirements into feature groups
+
+**Implementation:**
+- **create-ticket** - Create ticket files from git diff and codebase analysis
+- **dev-ticket** - Execute a ticket with red-green-refactor methodology
+- **ticket-review** - Adversarial code review that finds issues and validates claims
 
 ## Installation
 
@@ -66,7 +72,7 @@ npx bmad-for-humans --ide=claude-code,cursor
 
 ### Agents
 
-**Elliot** (`/elliot`) - Senior coding mentor
+**Reachy** (`/reachy`) - AI coding companion
 
 | Command | Description |
 |---------|-------------|
@@ -75,6 +81,9 @@ npx bmad-for-humans --ide=claude-code,cursor
 | `GD` or `guide` | Find relevant files, patterns, existing code |
 | `SN` or `scan` | Scan for regressions and fragile spots |
 | `EX` or `explain` | Explain WHY something works this way |
+| `CT` or `create-ticket` | Create a ticket from git diff and context |
+| `DT` or `dev-ticket` | Develop a ticket using red-green-refactor |
+| `TR` or `ticket-review` | Review completed ticket work |
 
 **PM** (`/pm`) - Product Manager
 
@@ -86,6 +95,8 @@ npx bmad-for-humans --ide=claude-code,cursor
 
 ### Workflows
 
+**Planning:**
+
 | Command | Description |
 |---------|-------------|
 | `/create-prd` | Create PRD through collaborative discovery |
@@ -94,9 +105,17 @@ npx bmad-for-humans --ide=claude-code,cursor
 | `/project` | Create architecture & project context docs |
 | `/plan-epics` | Break down PRD into feature groups |
 
+**Implementation:**
+
+| Command | Description |
+|---------|-------------|
+| `/create-ticket` | Create ticket from git diff and codebase analysis |
+| `/dev-ticket` | Execute ticket with red-green-refactor |
+| `/ticket-review` | Adversarial code review |
+
 ### Context Files
 
-Elliot requires these files in your project root:
+Reachy requires these files in your project root:
 
 ```
 project.md    # Architecture, tech stack, key decisions

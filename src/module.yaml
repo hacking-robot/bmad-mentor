@@ -1,6 +1,6 @@
 id: bmad-for-humans
 name: BMAD For Humans
-description: Agents and workflows for guided software development - Elliot (coding mentor), PM (product manager), plus PRD, project, and planning workflows.
+description: Agents and workflows for guided software development - Reachy (AI coding companion), PM (product manager), plus PRD, project, planning, and implementation workflows.
 version: 1.0.0
 author: hacking-robot
 
@@ -11,14 +11,17 @@ bmad_version: ">=6.0.0-alpha"
 # Installation configuration
 install:
   agents:
-    - src/agents/elliot.agent.yaml
+    - src/agents/reachy.agent.yaml
     - src/agents/pm.agent.yaml
   resources:
-    - src/agents/elliot/instructions.md
+    - src/agents/reachy/instructions.md
   workflows:
     - src/workflows/prd
     - src/workflows/project
     - src/workflows/3-solutioning/plan-epics
+    - src/workflows/4-implementation/create-ticket
+    - src/workflows/4-implementation/dev-ticket
+    - src/workflows/4-implementation/ticket-review
 
 # Questions asked during installation
 questions:
@@ -72,11 +75,11 @@ post_install:
 # What this module provides
 provides:
   agents:
-    - id: elliot
-      name: Elliot
-      title: The Senior Mentor
-      icon: "🧭"
-      description: Senior coding mentor who guides you to write better code
+    - id: reachy
+      name: Reachy
+      title: Your AI Coding Companion
+      icon: "🤖"
+      description: Friendly AI coding companion who helps with code exploration, debugging, and learning
       commands:
         - trigger: "/check"
           description: Check code against AC, specs, architecture
@@ -88,6 +91,12 @@ provides:
           description: Scan for regressions and fragile spots
         - trigger: "/explain"
           description: Explain WHY something works this way
+        - trigger: "/create-ticket"
+          description: Create a ticket from git diff and context
+        - trigger: "/dev-ticket"
+          description: Develop a ticket using red-green-refactor
+        - trigger: "/ticket-review"
+          description: Review completed ticket work
 
     - id: pm
       name: PM
@@ -114,4 +123,19 @@ provides:
     - id: plan-epics
       name: Plan Epics
       description: Break down requirements into feature groups and work units
+      modes: [create]
+
+    - id: create-ticket
+      name: Create Ticket
+      description: Create ticket files from git diff and codebase analysis
+      modes: [create]
+
+    - id: dev-ticket
+      name: Dev Ticket
+      description: Execute a ticket with red-green-refactor methodology
+      modes: [create]
+
+    - id: ticket-review
+      name: Ticket Review
+      description: Adversarial code review that finds issues and validates claims
       modes: [create]

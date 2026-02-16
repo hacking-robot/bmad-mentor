@@ -263,10 +263,10 @@ IT IS CRITICAL THAT YOU FOLLOW THIS COMMAND: LOAD the FULL @_bmad/bmm/workflows/
 // Agent definitions
 const AGENTS = [
   {
-    name: 'elliot',
-    description: 'Elliot - Senior coding mentor',
-    file: 'elliot.agent.yaml',
-    wrapperFile: 'elliot.md',
+    name: 'reachy',
+    description: 'Reachy - AI coding companion',
+    file: 'reachy.agent.yaml',
+    wrapperFile: 'reachy.md',
   },
   {
     name: 'pm',
@@ -307,6 +307,24 @@ const WORKFLOWS = [
     description: 'Break down requirements into feature groups and work units',
     target: '3-solutioning/plan-epics/workflow.md',
     wrapperFile: 'plan-epics.md',
+  },
+  {
+    name: 'create-ticket',
+    description: 'Create ticket files from git diff and codebase analysis',
+    target: '4-implementation/create-ticket/workflow.md',
+    wrapperFile: 'create-ticket.md',
+  },
+  {
+    name: 'dev-ticket',
+    description: 'Execute a ticket with red-green-refactor methodology',
+    target: '4-implementation/dev-ticket/workflow.md',
+    wrapperFile: 'dev-ticket.md',
+  },
+  {
+    name: 'ticket-review',
+    description: 'Adversarial code review that finds issues and validates claims',
+    target: '4-implementation/ticket-review/workflow.md',
+    wrapperFile: 'ticket-review.md',
   },
 ];
 
@@ -401,14 +419,18 @@ mkdirp(tasksDir);
 console.log('\n✅ BMAD For Humans installed successfully!\n');
 console.log('Available commands:');
 console.log('\n  Agents:');
-console.log('    /elliot       - Senior coding mentor');
+console.log('    /reachy       - AI coding companion');
 console.log('    /pm           - Product Manager');
-console.log('\n  Workflows:');
+console.log('\n  Planning Workflows:');
 console.log('    /create-prd   - Create a new PRD');
 console.log('    /edit-prd     - Edit an existing PRD');
 console.log('    /validate-prd - Validate a PRD');
 console.log('    /project      - Create project context & architecture');
 console.log('    /plan-epics   - Break down into feature groups');
+console.log('\n  Implementation Workflows:');
+console.log('    /create-ticket - Create ticket from git diff');
+console.log('    /dev-ticket    - Execute ticket (red-green-refactor)');
+console.log('    /ticket-review - Adversarial code review');
 console.log('\nSupported IDEs:');
 const preferred = Object.entries(IDE_CONFIGS).filter(([,c]) => c.preferred).map(([id]) => id).join(', ');
 const others = Object.entries(IDE_CONFIGS).filter(([,c]) => !c.preferred).map(([id]) => id).join(', ');
