@@ -22,7 +22,8 @@ The BMAD installer doesn't support community modules yet. Install manually:
 git clone https://github.com/hacking-robot/bmad-mentor.git
 
 # 2. Copy to your BMAD project
-cp -r bmad-mentor/src/agents/* your-project/_bmad/agents/
+mkdir -p your-project/_bmad/bmm/agents
+cp -r bmad-mentor/src/agents/* your-project/_bmad/bmm/agents/
 cp -r bmad-mentor/src/workflows/* your-project/_bmad/bmm/workflows/
 
 # 3. Create context files (required for Elliot)
