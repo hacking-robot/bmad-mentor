@@ -5,25 +5,180 @@ const path = require('path');
 
 const PROJECT_ROOT = process.cwd();
 
-// IDE configurations
+// IDE configurations (all BMAD-supported platforms)
 const IDE_CONFIGS = {
+  // Recommended
   'claude-code': {
     name: 'Claude Code',
+    preferred: true,
+    category: 'cli',
     commandsDir: '.claude/commands/bmad/bmm',
     agentsDir: '.claude/commands/bmad/bmm/agents',
     workflowsDir: '.claude/commands/bmad/bmm/workflows',
+    detectDir: '.claude',
   },
   cursor: {
     name: 'Cursor',
+    preferred: true,
+    category: 'ide',
     commandsDir: '.cursor/commands/bmad/bmm',
     agentsDir: '.cursor/commands/bmad/bmm/agents',
     workflowsDir: '.cursor/commands/bmad/bmm/workflows',
+    detectDir: '.cursor',
   },
   windsurf: {
     name: 'Windsurf',
+    preferred: true,
+    category: 'ide',
     commandsDir: '.windsurf/workflows/bmad/bmm',
     agentsDir: '.windsurf/workflows/bmad/bmm/agents',
     workflowsDir: '.windsurf/workflows/bmad/bmm/workflows',
+    detectDir: '.windsurf',
+  },
+  // Other IDEs
+  cline: {
+    name: 'Cline',
+    preferred: false,
+    category: 'ide',
+    commandsDir: '.cline/commands/bmad/bmm',
+    agentsDir: '.cline/commands/bmad/bmm/agents',
+    workflowsDir: '.cline/commands/bmad/bmm/workflows',
+    detectDir: '.cline',
+  },
+  opencode: {
+    name: 'OpenCode',
+    preferred: false,
+    category: 'ide',
+    commandsDir: '.opencode/commands/bmad/bmm',
+    agentsDir: '.opencode/commands/bmad/bmm/agents',
+    workflowsDir: '.opencode/commands/bmad/bmm/workflows',
+    detectDir: '.opencode',
+  },
+  auggie: {
+    name: 'Auggie',
+    preferred: false,
+    category: 'cli',
+    commandsDir: '.auggie/commands/bmad/bmm',
+    agentsDir: '.auggie/commands/bmad/bmm/agents',
+    workflowsDir: '.auggie/commands/bmad/bmm/workflows',
+    detectDir: '.auggie',
+  },
+  roo: {
+    name: 'Roo Cline',
+    preferred: false,
+    category: 'ide',
+    commandsDir: '.roo/commands/bmad/bmm',
+    agentsDir: '.roo/commands/bmad/bmm/agents',
+    workflowsDir: '.roo/commands/bmad/bmm/workflows',
+    detectDir: '.roo',
+  },
+  rovo: {
+    name: 'Rovo',
+    preferred: false,
+    category: 'ide',
+    commandsDir: '.rovo/commands/bmad/bmm',
+    agentsDir: '.rovo/commands/bmad/bmm/agents',
+    workflowsDir: '.rovo/commands/bmad/bmm/workflows',
+    detectDir: '.rovo',
+  },
+  'rovo-dev': {
+    name: 'Rovo Dev',
+    preferred: false,
+    category: 'ide',
+    commandsDir: '.rovo-dev/commands/bmad/bmm',
+    agentsDir: '.rovo-dev/commands/bmad/bmm/agents',
+    workflowsDir: '.rovo-dev/commands/bmad/bmm/workflows',
+    detectDir: '.rovo-dev',
+  },
+  kiro: {
+    name: 'Kiro',
+    preferred: false,
+    category: 'ide',
+    commandsDir: '.kiro/commands/bmad/bmm',
+    agentsDir: '.kiro/commands/bmad/bmm/agents',
+    workflowsDir: '.kiro/commands/bmad/bmm/workflows',
+    detectDir: '.kiro',
+  },
+  'github-copilot': {
+    name: 'GitHub Copilot',
+    preferred: false,
+    category: 'ide',
+    commandsDir: '.github/copilot/commands/bmad/bmm',
+    agentsDir: '.github/copilot/commands/bmad/bmm/agents',
+    workflowsDir: '.github/copilot/commands/bmad/bmm/workflows',
+    detectDir: '.github',
+  },
+  codex: {
+    name: 'Codex',
+    preferred: false,
+    category: 'cli',
+    commandsDir: '.codex/commands/bmad/bmm',
+    agentsDir: '.codex/commands/bmad/bmm/agents',
+    workflowsDir: '.codex/commands/bmad/bmm/workflows',
+    detectDir: '.codex',
+  },
+  qwen: {
+    name: 'QwenCoder',
+    preferred: false,
+    category: 'ide',
+    commandsDir: '.qwen/commands/bmad/bmm',
+    agentsDir: '.qwen/commands/bmad/bmm/agents',
+    workflowsDir: '.qwen/commands/bmad/bmm/workflows',
+    detectDir: '.qwen',
+  },
+  gemini: {
+    name: 'Gemini CLI',
+    preferred: false,
+    category: 'cli',
+    commandsDir: '.gemini/commands/bmad/bmm',
+    agentsDir: '.gemini/commands/bmad/bmm/agents',
+    workflowsDir: '.gemini/commands/bmad/bmm/workflows',
+    detectDir: '.gemini',
+  },
+  iflow: {
+    name: 'iFlow',
+    preferred: false,
+    category: 'ide',
+    commandsDir: '.iflow/commands/bmad/bmm',
+    agentsDir: '.iflow/commands/bmad/bmm/agents',
+    workflowsDir: '.iflow/commands/bmad/bmm/workflows',
+    detectDir: '.iflow',
+  },
+  kilo: {
+    name: 'KiloCoder',
+    preferred: false,
+    category: 'ide',
+    commandsDir: '.kilo/commands/bmad/bmm',
+    agentsDir: '.kilo/commands/bmad/bmm/agents',
+    workflowsDir: '.kilo/commands/bmad/bmm/workflows',
+    detectDir: '.kilo',
+  },
+  crush: {
+    name: 'Crush',
+    preferred: false,
+    category: 'ide',
+    commandsDir: '.crush/commands/bmad/bmm',
+    agentsDir: '.crush/commands/bmad/bmm/agents',
+    workflowsDir: '.crush/commands/bmad/bmm/workflows',
+    detectDir: '.crush',
+  },
+  antigravity: {
+    name: 'Google Antigravity',
+    preferred: false,
+    category: 'ide',
+    commandsDir: '.antigravity/commands/bmad/bmm',
+    agentsDir: '.antigravity/commands/bmad/bmm/agents',
+    workflowsDir: '.antigravity/commands/bmad/bmm/workflows',
+    detectDir: '.antigravity',
+  },
+  trae: {
+    name: 'Trae',
+    preferred: false,
+    category: 'ide',
+    commandsDir: '.trae/commands/bmad/bmm',
+    agentsDir: '.trae/commands/bmad/bmm/agents',
+    workflowsDir: '.trae/commands/bmad/bmm/workflows',
+    detectDir: '.trae',
   },
 };
 
@@ -31,8 +186,7 @@ const IDE_CONFIGS = {
 function detectIDEs() {
   const detected = [];
   for (const [id, config] of Object.entries(IDE_CONFIGS)) {
-    const baseDir = config.commandsDir.split('/').slice(0, 2).join('/');
-    if (fs.existsSync(path.join(PROJECT_ROOT, baseDir))) {
+    if (fs.existsSync(path.join(PROJECT_ROOT, config.detectDir))) {
       detected.push(id);
     }
   }
@@ -255,6 +409,10 @@ console.log('    /edit-prd     - Edit an existing PRD');
 console.log('    /validate-prd - Validate a PRD');
 console.log('    /project      - Create project context & architecture');
 console.log('    /plan-epics   - Break down into feature groups');
-console.log('\nSupported IDEs: claude-code, cursor, windsurf');
-console.log('Usage: npx bmad-mentor --ide=cursor');
+console.log('\nSupported IDEs:');
+const preferred = Object.entries(IDE_CONFIGS).filter(([,c]) => c.preferred).map(([id]) => id).join(', ');
+const others = Object.entries(IDE_CONFIGS).filter(([,c]) => !c.preferred).map(([id]) => id).join(', ');
+console.log(`  Recommended: ${preferred}`);
+console.log(`  Others: ${others}`);
+console.log('\nUsage: npx bmad-mentor --ide=cursor');
 console.log('\nRestart your IDE to use the new commands.\n');
