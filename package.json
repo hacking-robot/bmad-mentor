@@ -1,6 +1,6 @@
 {
   "name": "bmad-mentor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Meet Elliot: Your Senior Mentor for code. A BMAD module with agents that help you own your code through guided discovery and validation.",
   "main": "src/module.yaml",
   "scripts": {
