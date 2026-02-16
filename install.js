@@ -54,40 +54,85 @@ copyDir(path.join(srcDir, 'workflows'), path.join(PROJECT_ROOT, '_bmad/bmm/workf
 // 2. Create Claude Code command wrappers
 console.log('\n📋 Creating Claude Code command wrappers...');
 mkdirp(path.join(PROJECT_ROOT, '.claude/commands/bmad/bmm/agents'));
+mkdirp(path.join(PROJECT_ROOT, '.claude/commands/bmad/bmm/workflows'));
 
-// Elliot wrapper
-const elliotWrapper = `---
-name: 'elliot'
-description: 'Elliot - Senior coding mentor'
+// Agent wrappers
+const agentWrappers = [
+  {
+    name: 'elliot',
+    description: 'Elliot - Senior coding mentor',
+    file: 'elliot.md',
+    target: '@_bmad/bmm/agents/elliot.agent.yaml'
+  },
+  {
+    name: 'pm',
+    description: 'PM - Product Manager',
+    file: 'pm.md',
+    target: '@_bmad/bmm/agents/pm.agent.yaml'
+  }
+];
+
+for (const agent of agentWrappers) {
+  const content = `---
+name: '${agent.name}'
+description: '${agent.description}'
 ---
 You must fully embody this agent's persona and follow all activation instructions exactly as specified. NEVER break character until given an exit command.
 
 <agent-activation CRITICAL="TRUE">
-1. LOAD the FULL agent file from @_bmad/bmm/agents/elliot.agent.yaml
+1. LOAD the FULL agent file from ${agent.target}
 2. READ its entire contents - this contains the complete agent persona, menu, and instructions
 3. Execute ALL activation steps exactly as written in the agent file
 4. Follow the agent's persona and menu system precisely
 5. Stay in character throughout the session
 </agent-activation>
 `;
-writeFile(path.join(PROJECT_ROOT, '.claude/commands/bmad/bmm/agents/elliot.md'), elliotWrapper);
+  writeFile(path.join(PROJECT_ROOT, '.claude/commands/bmad/bmm/agents', agent.file), content);
+}
 
-// PM wrapper
-const pmWrapper = `---
-name: 'pm'
-description: 'PM - Product Manager'
+// Workflow wrappers
+const workflowWrappers = [
+  {
+    name: 'create-prd',
+    description: 'Create a new PRD through collaborative discovery',
+    file: 'create-prd.md',
+    target: '@_bmad/bmm/workflows/prd/workflow-create-prd.md'
+  },
+  {
+    name: 'edit-prd',
+    description: 'Edit an existing PRD',
+    file: 'edit-prd.md',
+    target: '@_bmad/bmm/workflows/prd/workflow-edit-prd.md'
+  },
+  {
+    name: 'validate-prd',
+    description: 'Validate a PRD for completeness',
+    file: 'validate-prd.md',
+    target: '@_bmad/bmm/workflows/prd/workflow-validate-prd.md'
+  },
+  {
+    name: 'project',
+    description: 'Create project context and architecture docs',
+    file: 'project.md',
+    target: '@_bmad/bmm/workflows/project/workflow.md'
+  },
+  {
+    name: 'plan-epics',
+    description: 'Break down requirements into feature groups and work units',
+    file: 'plan-epics.md',
+    target: '@_bmad/bmm/workflows/3-solutioning/plan-epics/workflow.md'
+  }
+];
+
+for (const workflow of workflowWrappers) {
+  const content = `---
+description: '${workflow.description}'
 ---
-You must fully embody this agent's persona and follow all activation instructions exactly as specified. NEVER break character until given an exit command.
 
-<agent-activation CRITICAL="TRUE">
-1. LOAD the FULL agent file from @_bmad/bmm/agents/pm.agent.yaml
-2. READ its entire contents - this contains the complete agent persona, menu, and instructions
-3. Execute ALL activation steps exactly as written in the agent file
-4. Follow the agent's persona and menu system precisely
-5. Stay in character throughout the session
-</agent-activation>
+IT IS CRITICAL THAT YOU FOLLOW THIS COMMAND: LOAD the FULL ${workflow.target}, READ its entire contents and follow its directions exactly!
 `;
-writeFile(path.join(PROJECT_ROOT, '.claude/commands/bmad/bmm/agents/pm.md'), pmWrapper);
+  writeFile(path.join(PROJECT_ROOT, '.claude/commands/bmad/bmm/workflows', workflow.file), content);
+}
 
 // 3. Create context files if they don't exist
 console.log('\n📄 Creating context files...');
@@ -131,6 +176,13 @@ mkdirp(tasksDir);
 
 console.log('\n✅ BMAD Mentor installed successfully!\n');
 console.log('Available commands:');
-console.log('  /elliot  - Senior coding mentor');
-console.log('  /pm      - Product Manager');
+console.log('\n  Agents:');
+console.log('    /elliot       - Senior coding mentor');
+console.log('    /pm           - Product Manager');
+console.log('\n  Workflows:');
+console.log('    /create-prd   - Create a new PRD');
+console.log('    /edit-prd     - Edit an existing PRD');
+console.log('    /validate-prd - Validate a PRD');
+console.log('    /project      - Create project context & architecture');
+console.log('    /plan-epics   - Break down into feature groups');
 console.log('\nRestart Claude Code to use the new commands.\n');
