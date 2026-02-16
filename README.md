@@ -66,15 +66,33 @@ Activate with `/pm` in your AI IDE. Facilitates PRD creation and planning.
 
 ### Workflows
 
-Run workflows directly from your AI IDE:
+#### PRD Workflow (via PM agent)
+Create, edit, and validate Product Requirements Documents.
+- `CP` - Create new PRD through collaborative discovery
+- `EP` - Edit existing PRD
+- `VP` - Validate PRD completeness and quality
 
+#### Project Workflow
+Create LLM-optimized `project-context.md` and `architecture.md` for your project.
 ```
-/_bmad/bmm/workflows/prd/workflow-create-prd.md      # Create PRD
-/_bmad/bmm/workflows/prd/workflow-edit-prd.md        # Edit PRD
-/_bmad/bmm/workflows/prd/workflow-validate-prd.md    # Validate PRD
-/_bmad/bmm/workflows/project/workflow.md             # Project setup
-/_bmad/bmm/workflows/3-solutioning/plan-epics/workflow.md  # Break down into epics
+/_bmad/bmm/workflows/project/workflow.md
 ```
+- Supports greenfield (new) and brownfield (existing) projects
+- Auto-detects existing codebase
+- Produces architecture decisions and coding patterns
+
+#### Plan Epics Workflow
+Break down PRD requirements into feature groups and work units for Jira ticket creation.
+```
+/_bmad/bmm/workflows/3-solutioning/plan-epics/workflow.md
+```
+**Requires:** `prd.md` and `architecture.md` from previous workflows
+**Produces:** `project-breakdown.md` with:
+- Feature groupings by user value
+- Work units with acceptance criteria
+- FR coverage map
+- Dependency order
+- Relative sizing (S/M/L)
 
 ## Requirements
 
